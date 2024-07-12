@@ -18,6 +18,7 @@ export class ComponentsCartComponent {
   }
 
   deleteItem(product: Product) {
+    this.stockService.removeFromCart(product);
     this.cartService.removeFromCart(product);
     product.stock += product.quantity;
     product.quantity = 0;

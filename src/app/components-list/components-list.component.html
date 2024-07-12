@@ -1,8 +1,8 @@
 <div class="row">
 
-    <h4>Mostrando {{products.length}} productos</h4>
+    <h4>Mostrando todos los productos</h4>
 
-    @for (product of products; track product.name) {
+    @for (product of products$ | async; track product.name) {
     <div class="col-md-4 mt-2">
         <div class="card bg-light shadow">
             <img class="card-img-top" src="{{product.image}}" alt="Title">

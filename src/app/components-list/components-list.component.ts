@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Product } from './Product';
 import { CartServiceService } from '../cart-service.service';
 import { ProductStockService } from '../product-stock.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-components-list',
@@ -9,12 +10,13 @@ import { ProductStockService } from '../product-stock.service';
   styleUrl: './components-list.component.scss'
 })
 export class ComponentsListComponent {
-  constructor(private cartService: CartServiceService, private stockService: ProductStockService) { }
+  constructor(private cartService: CartServiceService, private stockService: ProductStockService) {}
 
-  products: Product[] = [];
+  products$: Observable<Product[]> = new Observable;
 
   ngOnInit(): void {
-    this.stockService.getAll().subscribe(products => this.products = products);
+    this.stockService.getAll();
+    this.products$ = this.stockService.stock.asObservable();
   }
 
   increment(product: Product): void {
