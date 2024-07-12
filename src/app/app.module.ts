@@ -10,6 +10,7 @@ import { StoreComponent } from './store/store.component';
 import { AboutComponent } from './about/about.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { InputIntegerComponent } from './input-integer/input-integer.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     ComponentsListComponent,
     ComponentsCartComponent,
     StoreComponent,
-    AboutComponent
+    AboutComponent,
+    InputIntegerComponent
   ],
   imports: [
     BrowserModule,

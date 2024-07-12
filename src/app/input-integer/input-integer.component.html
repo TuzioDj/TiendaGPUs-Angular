@@ -1,0 +1,5 @@
+<div class="col-sm-4 input-number justify-content-center mx-auto stockInput">
+    <button class="btn btn-sm btn-outline-secondary" (click)="decrement()">-</button>
+    <input type="text" class="form-control" [(ngModel)]="quantity" (keyup)="changeQuantity($event)">
+    <button class="btn btn-sm btn-outline-secondary" (click)="increment()">+</button>
+</div>
