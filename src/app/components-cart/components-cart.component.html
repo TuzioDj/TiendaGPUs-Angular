@@ -1,28 +1,36 @@
+<h4 class="mb-3">Carrito de compras:</h4>
 <div class="card bg-light shadow">
-    <h5 class="card-title m-4">Carrito de compras:</h5>
-    <div class="card bg-light shadow m-4">
+    <div class="card bg-light shadow m-3">
         <div class="row px-4 py-3">
             <div class="col-md-4">
                 <p class="card-text mb-0">Nombre</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <p class="card-text mb-0">Precio</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <p class="card-text mb-0">Cantidad</p>
+            </div>
+            <div class="col-md-2">
+                <p class="card-text mb-0"></p>
             </div>
         </div>
 
-        @for (product of cartList; track product.name) {
-        <div class="row px-4 mb-2">
+        @for (product of cartList$ | async; track product.name) {
+        <div class="row px-4 mb-3">
             <div class="col-md-4">
-                <p class="card-text mb-0">{{product.name}}</p>
+                <p class="card-text fw-bold mb-0">{{product.name}}</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <p class="card-text mb-0">${{product.price}}</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <p class="card-text mb-0">{{product.quantity}}</p>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger p-1" (click)="deleteItem(product)">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#e8eaed"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                </button>
             </div>
         </div>
         }

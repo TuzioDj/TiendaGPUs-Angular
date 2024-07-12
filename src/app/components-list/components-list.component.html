@@ -1,20 +1,19 @@
 <div class="row">
 
-    <h4>Mostrando N productos</h4>
-    <h5>Mostrando todo</h5>
+    <h4>Mostrando {{products.length}} productos</h4>
 
     @for (product of products; track product.name) {
-    <div class="col-md-4 mt-4">
+    <div class="col-md-4 mt-2">
         <div class="card bg-light shadow">
-            <img class="card-img-top" src="" alt="Title">
+            <img class="card-img-top" src="{{product.image}}" alt="Title">
             <div class="card-body">
-                <h4 class="card-text fw-bold mb-3">${{product.price}}</h4>
+                <h4 class="card-text fw-bold mb-1">${{product.price}}</h4>
                 <h5 class="card-title mb-0">{{product.name}}</h5>
-                <p class="text-reset">{{product.type}}</p>
+                <p class="text-reset mb-0">{{product.type}}</p>
                 @if (product.stock >0) {
-                <p class="mt-3 card-text fw-bold">Stock: {{product.stock}}</p>
+                <p class="mt-1 card-text fw-bold">Stock: {{product.stock}}</p>
                 } @else {
-                <p class="mt-3 card-text fw-bold text-danger">Sin stock</p>
+                <p class="mt-1 card-text fw-bold text-danger">Sin stock</p>
                 }
             </div>
             <div class="col-sm-4 input-number justify-content-center mx-auto">

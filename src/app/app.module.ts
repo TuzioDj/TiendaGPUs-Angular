@@ -7,7 +7,9 @@ import { ComponentsListComponent } from './components-list/components-list.compo
 import { ComponentsCartComponent } from './components-cart/components-cart.component';
 import { FormsModule } from '@angular/forms';
 import { StoreComponent } from './store/store.component';
-import { AboutComponent } from './about/about.component'
+import { AboutComponent } from './about/about.component';
+
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { AboutComponent } from './about/about.component'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [
     provideClientHydration()

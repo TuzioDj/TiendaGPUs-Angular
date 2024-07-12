@@ -6,15 +6,15 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CartServiceService {
-
+  
   private $cartList: Product[] = [];
   cartList: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
-
+  
   constructor() { }
-
+  
   addToCart(product: Product) {
     let item: Product | undefined = this.$cartList.find((v1) => v1.name == product.name);
-
+    
     if (!item) {
       this.$cartList.push({ ... product });
     } else {
@@ -23,4 +23,9 @@ export class CartServiceService {
     this.cartList.next(this.$cartList);
   }
 
+  removeFromCart(product: Product) {
+    this.$cartList = this.$cartList.filter((v1) => v1.name !== product.name);
+    this.cartList.next(this.$cartList);
+  }
+  
 }

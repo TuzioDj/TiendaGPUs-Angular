@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Product } from './Product';
 import { CartServiceService } from '../cart-service.service';
+import { ProductStockService } from '../product-stock.service';
 
 @Component({
   selector: 'app-components-list',
@@ -8,31 +9,13 @@ import { CartServiceService } from '../cart-service.service';
   styleUrl: './components-list.component.scss'
 })
 export class ComponentsListComponent {
-  constructor(private cartService: CartServiceService) { }
+  constructor(private cartService: CartServiceService, private stockService: ProductStockService) { }
 
-  products: Product[] = [
-    {
-      name: 'Producto',
-      type: 'Tipo',
-      price: 50,
-      stock: 5,
-      quantity: 0,
-    },
-    {
-      name: 'Producto2',
-      type: 'Tipo2',
-      price: 150,
-      stock: 0,
-      quantity: 0,
-    },
-    {
-      name: 'Producto3',
-      type: 'Tipo3',
-      price: 500,
-      stock: 10,
-      quantity: 0,
-    }
-  ]
+  products: Product[] = [];
+
+  ngOnInit(): void {
+    this.stockService.getAll().subscribe(products => this.products = products);
+  }
 
   increment(product: Product): void {
     if (product.quantity < product.stock) {
